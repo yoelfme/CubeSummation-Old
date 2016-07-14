@@ -1,27 +1,33 @@
-# Laravel PHP Framework
+# Cube Summation Challenge
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This repository contains solve of Cube Summation with Laravel from challenge in [Hacker Rank](https://www.hackerrank.com/challenges/cube-summation).
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Architecture
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Client Layer
+Client layer executed in the browser is responsible for serving a graphical user interface, where the load is done a file with predefined commands and a text box where you can still modify those commands. and other small validations performed by the server are made.
 
-## Official Documentation
+**This layer is composed of:**
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+ - Bootstrap used to build the UI.
+ - jQuery used to make request to server and select DOM elements
+ - app.js is the file used with Javascript code used for loading the file and make the request to the server to resolve the commands.
 
-## Contributing
+### Presentation Layer
+Laravel Blade is used as template engine to serve the views.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Logic Layer
 
-## Security Vulnerabilities
+It is responsible for handling the information layer that sends the user a POST request medianta to resolve commands.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+ - **Matrix.php:** It is responsible for carrying out all logic to manage 3D matrices
+ - **Operator.php:** It is responsible for manipulating the text class that sends the user and make each of the parameters it needs to operate Matrix.php
+ - **MatrixController.php:** It is the controller responsible for processing user requests, creating an instance of the Operator class and passing it the parameters of the user.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## Tests
+
+In order to run the test completely there's a shell script, just run: `vendor/bin/phpunit`.
+
+------
+Created with :heart: by [yoelfme](http://github.com/yoelfme)
