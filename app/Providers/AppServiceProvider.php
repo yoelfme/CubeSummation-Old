@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace CubeSummation\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
