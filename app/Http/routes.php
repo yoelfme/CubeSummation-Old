@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('app');
 });
+
+Route::post('/resolve', 'MatrixController@resolve');
