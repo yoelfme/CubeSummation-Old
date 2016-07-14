@@ -50,6 +50,33 @@
             }
 
             reader.readAsText(file, 'utf-8');
+        },
+        resolve: function (event) {
+            event.preventDefault();
+
+            var form = $(this);
+
+            // Clear previous results
+            $('#results').empty();
+            
+            $.ajax({
+                url: form.prop('action'),
+                method: 'POST',
+                dataType: 'json',
+                data: form.serialize(),
+                success: function (response) {
+                    
+                    if (response.success === true) {
+                        response.data.forEach(function (result) {
+                            $('#results').append(
+                                $('<li>', {
+                                    text: result
+                                })
+                            );
+                        })
+                    }
+                }
+            })
         }
     }
 
@@ -58,4 +85,7 @@
 
     // Event used to set the file in the disabled input
     $(':file').on('fileselect', functions.loadFile);
+
+    // Handle event for submit commands form
+    $('#commands-form').on('submit', functions.resolve);
 })();
